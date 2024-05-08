@@ -8,7 +8,7 @@ let botonFinalizarJuego = document.querySelector(".finalizar");
 
 const LIMIT_LEFT = 0;
 const LIMIT_RIGHT = 700;
-const floor = '60px';
+const FLOOR = '60px';
 
 botonFinalizarJuego.addEventListener('click', () => {
   titulo.innerHTML = "Game over";
@@ -35,21 +35,21 @@ document.addEventListener('keydown', (evt) => {
   switch (key) {
     case "w": case "W": case "ArrowUp": {
       mario.style.bottom = "120px";
-      if (distanceElements(moneda, mario, 20)) {
-        puntaje.innerHTML = parseInt(puntaje.innerHTML) + 1;
-        moneda.style.display = 'none'
-      }
-      if (distanceElements(coinTwo, mario, 20)) {
-        puntaje.innerHTML = parseInt(puntaje.innerHTML) + 1;
-        coinTwo.style.display = 'none'
-      }
       setTimeout(() => {
-        mario.style.bottom = floor;
-      }, 750);
+        if (distanceElements(moneda, mario, 20)) {
+          puntaje.innerHTML = parseInt(puntaje.innerHTML) + 1;
+          moneda.style.display = 'none'
+        }
+        if (distanceElements(coinTwo, mario, 20)) {
+          puntaje.innerHTML = parseInt(puntaje.innerHTML) + 1;
+          coinTwo.style.display = 'none'
+        }
+        mario.style.bottom = FLOOR;
+      }, 250);
       break;
     }
     case "s": case "S": case "ArrowDown": {
-      mario.style.bottom = floor;
+      mario.style.bottom = FLOOR;
       break;
     }
     case "a": case "A": case "ArrowLeft": {
